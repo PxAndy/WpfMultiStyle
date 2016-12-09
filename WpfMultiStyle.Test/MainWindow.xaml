@@ -114,10 +114,12 @@
             <Setter Property="Padding" Value="16 10" />
             <Setter Property="FontSize" Value="18" />
         </Style>
+        
         <Style x:Key="btn-sm" TargetType="{x:Type Button}">
             <Setter Property="Padding" Value="10 5" />
             <Setter Property="FontSize" Value="12" />
         </Style>
+        
         <Style x:Key="btn-xs" TargetType="{x:Type Button}">
             <Setter Property="Padding" Value="5 1" />
             <Setter Property="FontSize" Value="12" />
