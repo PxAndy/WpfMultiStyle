@@ -1,0 +1,146 @@
+﻿<Window x:Class="WpfMultiStyle.Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfMultiStyle.Test"
+        xmlns:wms="clr-namespace:WpfMultiStyle;assembly=WpfMultiStyle"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Window.Resources>
+        <Style x:Key="btn" TargetType="{x:Type Button}">
+            <Setter Property="Padding" Value="12 6" />
+            <Setter Property="Margin" Value="0 5" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="3" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="btn-default" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="#ccc"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
+                        <GradientStop Color="#ffffff" Offset="0" />
+                        <GradientStop Color="#e0e0e0" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="4" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#e0e0e0"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#adadad"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 0.3">
+                                            <GradientStop Color="#c6c6c6" Offset="0" />
+                                            <GradientStop Color="#e0e0e0" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#adadad"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="#e0e0e0"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                                <Setter Property="Opacity" TargetName="border" Value="0.65"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="btn-primary" TargetType="{x:Type Button}">
+            <Setter Property="BorderBrush" Value="#285e8e"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 1">
+                        <GradientStop Color="#428bca" Offset="0" />
+                        <GradientStop Color="#2d6ca2" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="4" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                            <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" TargetName="border" Value="#2d6ca2"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#285e8e"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter Property="Background" TargetName="border">
+                                    <Setter.Value>
+                                        <LinearGradientBrush StartPoint="0, 0" EndPoint="0, 0.3">
+                                            <GradientStop Color="#27558f" Offset="0" />
+                                            <GradientStop Color="#2d6ca2" Offset="1" />
+                                        </LinearGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#285e8e"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter Property="Background" TargetName="border" Value="#e0e0e0"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#ccc"/>
+                                <Setter Property="Opacity" TargetName="border" Value="0.65"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="btn-lg" TargetType="{x:Type Button}">
+            <Setter Property="Padding" Value="16 10" />
+            <Setter Property="FontSize" Value="18" />
+        </Style>
+        <Style x:Key="btn-sm" TargetType="{x:Type Button}">
+            <Setter Property="Padding" Value="10 5" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style x:Key="btn-xs" TargetType="{x:Type Button}">
+            <Setter Property="Padding" Value="5 1" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+    </Window.Resources>
+    
+    <StackPanel>
+        <WrapPanel>
+            <Button Style="{wms:MultiStyle btn btn-default btn-lg}" Content="Large button" />
+            <Button Style="{wms:MultiStyle btn btn-primary btn-lg}" Content="Large button" />
+        </WrapPanel>
+        <WrapPanel>
+            <Button Style="{wms:MultiStyle btn btn-default}" Content="Default button" />
+            <Button Style="{wms:MultiStyle btn btn-primary}" Content="Default button" />
+        </WrapPanel>
+        <WrapPanel>
+            <Button Style="{wms:MultiStyle btn btn-default btn-sm}" Content="Small button" />
+            <Button Style="{wms:MultiStyle btn btn-primary btn-sm}" Content="Small button" />
+        </WrapPanel>
+        <WrapPanel>
+            <Button Style="{wms:MultiStyle btn btn-default btn-xs}" Content="Extra small button" />
+            <Button Style="{wms:MultiStyle btn btn-primary btn-xs}" Content="Extra small button" />
+        </WrapPanel>
+    </StackPanel>
+    
+</Window>

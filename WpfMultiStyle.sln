@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMultiStyle", "WpfMultiStyle\WpfMultiStyle.csproj", "{862053ED-9901-4FE5-8AB1-887057D0461A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfMultiStyle.Test", "WpfMultiStyle.Test\WpfMultiStyle.Test.csproj", "{57A6355B-58A6-49D2-AA1B-422CD3CA4E57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{862053ED-9901-4FE5-8AB1-887057D0461A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{862053ED-9901-4FE5-8AB1-887057D0461A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{862053ED-9901-4FE5-8AB1-887057D0461A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{862053ED-9901-4FE5-8AB1-887057D0461A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57A6355B-58A6-49D2-AA1B-422CD3CA4E57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57A6355B-58A6-49D2-AA1B-422CD3CA4E57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57A6355B-58A6-49D2-AA1B-422CD3CA4E57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57A6355B-58A6-49D2-AA1B-422CD3CA4E57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
