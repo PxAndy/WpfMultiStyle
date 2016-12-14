@@ -15,5 +15,8 @@ xmlns:wms="clr-namespace:WpfMultiStyle;assembly=WpfMultiStyle"
 <Button Style="{wms:MultiStyle btn btn-default btn-lg}" Content="Large button" />
 ```
 
+### 运行效果
+![demo](https://github.com/PxAndy/WpfMultiStyle/blob/master/demo.png)
+
 ## 参考
 [How to apply multiple styles in WPF](http://stackoverflow.com/questions/16096/how-to-apply-multiple-styles-in-wpf)
