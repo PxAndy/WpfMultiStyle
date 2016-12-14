@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace WpfMultiStyle
 {
     /// <summary>
-    /// <see cref="System.Windows.Style"/> 的扩展。
+    /// 一些扩展方法。
     /// </summary>
-    public static class StyleExtension
+    internal static class InternalExtensions
     {
         /// <summary>
         /// 合并指定的 <see cref="System.Windows.Style"/>。
@@ -48,6 +50,44 @@ namespace WpfMultiStyle
             foreach (object key in style2.Resources.Keys)
             {
                 style1.Resources[key] = style2.Resources[key];
+            }
+        }
+
+        /// <summary>
+        /// 集合是否有值。
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static bool HasValue<T>(this IEnumerable<T> source)
+        {
+            return source != null && source.Any();
+        }
+
+        public static ResourceDictionary FindResourceDictionary(this Style style, object resourceKey)
+        {
+            if (style.Resources != null && style.Resources.Contains(resourceKey))
+            {
+                return style.Resources;
+            }
+            if (style.BasedOn != null)
+            {
+                return style.BasedOn.FindResourceDictionary(resourceKey);
+            }
+            return null;
+        }
+
+        public static void Merge(this ResourceDictionary resourceDictionary, ResourceDictionary mergee)
+        {
+            if (resourceDictionary != null && mergee != null && mergee.Count > 0)
+            {
+                foreach (var key in mergee.Keys)
+                {
+                    if (!resourceDictionary.Contains(key))
+                    {
+                        resourceDictionary.Add(key, mergee[key]);
+                    }
+                }
             }
         }
     }

@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Markup;
+using System.Xaml;
+using System.Linq;
 
 namespace WpfMultiStyle
 {
@@ -10,7 +13,39 @@ namespace WpfMultiStyle
     [MarkupExtensionReturnType(typeof(Style))]
     public class MultiStyleExtension : MarkupExtension
     {
-        private string[] _resourceKeys = new string[0];
+        private string[] _internalResourceKeys = new string[0];
+        private string _resourceKeys;
+
+        [ConstructorArgument("resourceKeys")]
+        public string ResourceKeys
+        {
+            get
+            {
+                return _resourceKeys;
+            }
+
+            set
+            {
+                _resourceKeys = value;
+
+                if (_resourceKeys.HasValue())
+                {
+                    _internalResourceKeys = _resourceKeys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                }
+                else
+                {
+                    _internalResourceKeys = new string[0];
+                }
+            }
+        }
+
+        /// <summary>
+        /// 构造方法。
+        /// </summary>
+        public MultiStyleExtension()
+        {
+            
+        }
 
         /// <summary>
         /// 构造方法。
@@ -18,10 +53,7 @@ namespace WpfMultiStyle
         /// <param name="resourceKeys">多个<see cref="System.Windows.Style"/>资源字典多个 Key</param>
         public MultiStyleExtension(string resourceKeys)
         {
-            if (resourceKeys != null && resourceKeys.Length > 0)
-            {
-                _resourceKeys = resourceKeys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-            }
+            ResourceKeys = resourceKeys;
         }
 
         /// <summary>
@@ -33,21 +65,23 @@ namespace WpfMultiStyle
         {
             Style resultStyle = new Style();
 
-            foreach (string currentResourceKey in _resourceKeys)
+            IProvideValueTarget service = serviceProvider.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
+            var fe = service.TargetObject as FrameworkElement;
+            
+            if (fe != null)
             {
-                Style currentStyle = new StaticResourceExtension(currentResourceKey).ProvideValue(serviceProvider) as Style;
-
-                /*if (currentStyle == null)
+                foreach (string resourceKey in _internalResourceKeys)
                 {
-                    throw new InvalidOperationException("找不到 " + currentResourceKey + "标识的资源。");
-                }*/
-
-                // 忽略无效的 Style
-                if (currentStyle != null)
-                {
-                    resultStyle.Merge(currentStyle);
+                    Style currentStyle = fe.TryFindResource(resourceKey) as Style;
+                    
+                    // 忽略无效的 Style
+                    if (currentStyle != null)
+                    {
+                        resultStyle.Merge(currentStyle);
+                    }
                 }
             }
+
             return resultStyle;
         }
     }

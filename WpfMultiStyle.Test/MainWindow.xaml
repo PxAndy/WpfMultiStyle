@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfMultiStyle.Test"
         xmlns:wms="clr-namespace:WpfMultiStyle;assembly=WpfMultiStyle"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow">
     <Window.Resources>
         <Style x:Key="btn" TargetType="{x:Type Button}">
             <Setter Property="Padding" Value="12 6" />
@@ -119,7 +119,7 @@
             <Setter Property="Padding" Value="10 5" />
             <Setter Property="FontSize" Value="12" />
         </Style>
-        
+
         <Style x:Key="btn-xs" TargetType="{x:Type Button}">
             <Setter Property="Padding" Value="5 1" />
             <Setter Property="FontSize" Value="12" />
@@ -129,19 +129,19 @@
     <StackPanel>
         <WrapPanel>
             <Button Style="{wms:MultiStyle btn btn-default btn-lg}" Content="Large button" />
-            <Button Style="{wms:MultiStyle btn btn-primary btn-lg}" Content="Large button" />
+            <Button wms:Apply.MultiStyle="btn btn-primary btn-lg" Content="Large button" />
         </WrapPanel>
         <WrapPanel>
             <Button Style="{wms:MultiStyle btn btn-default}" Content="Default button" />
-            <Button Style="{wms:MultiStyle btn btn-primary}" Content="Default button" />
+            <Button wms:Apply.MultiStyle="btn btn-primary" Content="Default button" />
         </WrapPanel>
         <WrapPanel>
             <Button Style="{wms:MultiStyle btn btn-default btn-sm}" Content="Small button" />
-            <Button Style="{wms:MultiStyle btn btn-primary btn-sm}" Content="Small button" />
+            <Button wms:Apply.MultiStyle="btn btn-primary btn-sm" Content="Small button" />
         </WrapPanel>
         <WrapPanel>
             <Button Style="{wms:MultiStyle btn btn-default btn-xs}" Content="Extra small button" />
-            <Button Style="{wms:MultiStyle btn btn-primary btn-xs}" Content="Extra small button" />
+            <Button wms:Apply.MultiStyle="btn btn-primary btn-xs" Content="Extra small button" />
         </WrapPanel>
     </StackPanel>
     
