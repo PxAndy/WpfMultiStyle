@@ -9,8 +9,8 @@
     <licenseUrl>https://github.com/PxAndy/WpfMultiStyle/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/PxAndy/WpfMultiStyle</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Apply multiple styles to one element for WPF.</description>
-    <releaseNotes>Apply multiple styles to one element for WPF.</releaseNotes>
+    <description>$description$</description>
+    <releaseNotes>1. 优化 MultiStyleExtension。 2. 新增附加属性方式实现。</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>WPF Multi-Style</tags>
   </metadata>
